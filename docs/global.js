@@ -6,7 +6,7 @@ const pages = {
         home: true,
     },
     "introduction": {
-        "about": {
+        "about.html": {
             title: "About Elysian",
             description: "Learn about the Elysian programming language."
         },
@@ -60,7 +60,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     let page = pages[path[2]];
     if (!page.home) {
-        return renderPage(page[path[2]], page);
+        return renderPage(page[path[3]], page);
     } 
     return renderPage(page, []);
 });
