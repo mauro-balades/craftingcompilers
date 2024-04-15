@@ -2,7 +2,8 @@
 const pages = {
     "": {
         title: "Home",
-        description: "Welcome to crafting compilers!"
+        description: "Welcome to crafting compilers!",
+        home: true,
     },
     "introduction": {
         "about": {
@@ -27,7 +28,7 @@ function renderSidebar(page, otherPages = []) {
     sidebarContent.appendChild(sidebarDescription);
     let sidebarPages = document.createElement("ul");
     sidebarPages.id = "sidebar-pages";
-    for (let page in pages) {
+    for (let page in otherPages) {
         let sidebarPage = document.createElement("li");
         sidebarPage.id = "sidebar-page";
         sidebarPage.innerHTML = page.title;
@@ -54,12 +55,12 @@ function renderPage(page, otherPages = []) {
 window.addEventListener("DOMContentLoaded", () => {
     let path = window.location.pathname.split("/");
     if (path.length == 0) {
-        path = "";
+        path = ["", ""];
     }
 
-    let page = pages[path[0]];
-    if (page != "") {
-        return renderPage(page[path[1]]);
+    let page = pages[path[2]];
+    if (!page.home) {
+        return renderPage(page[path[2]], page);
     } 
-    return renderPage(page);
+    return renderPage(page, []);
 });
