@@ -9,6 +9,7 @@
 
 node_modules/
 .vscode/
+.venv/
 
 # Precompiled Headers
 *.gch

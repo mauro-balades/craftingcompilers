@@ -17,6 +17,11 @@ const pages = {
             description: "Learn about the Elysian programming language.",
             url: `${HOME}/intro/about.html`,
         },
+        "getting-started.html": {
+            title: "Getting Started",
+            description: "Get started with crafting compilers.",
+            url: `${HOME}/intro/getting-started.html`,
+        },
     },
 }
 
