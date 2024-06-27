@@ -16,9 +16,9 @@ Elysian is a programming language that is designed to be simple, yet powerful la
 Some of the features of this language are:
 
 * Staticaly typed
-* Strongly typed
-* Simple syntax
 * Compiles to executable code
+* Hindley-Milner type inference
+* Uses LLVM Backend
 
 # How does it look like?
 
@@ -32,6 +32,12 @@ def main(): i32 {
     return z;
 }
 \`\`\`
+
+# How are we going to do this?
+
+We are going to use \`TypeScript\` for our compiler along with \`node-llvm\` in order to compile into an executable but you can use whatever you want!
+
+This project will try to be as simple as possible so that you can make it in the language you prefer and customize Elsyian to your liking.
 
 `
     </script>

@@ -7,6 +7,9 @@
 *.o
 *.obj
 
+node_modules/
+.vscode/
+
 # Precompiled Headers
 *.gch
 *.pch
