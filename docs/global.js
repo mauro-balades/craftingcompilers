@@ -54,6 +54,7 @@ function renderPage(page, otherPages = []) {
 
 window.addEventListener("DOMContentLoaded", () => {
     let path = window.location.pathname.split("/");
+    let inGithubPages = windows.location.hostname == "github.io";
     if (path.length == 0) {
         path = ["", ""];
     }
