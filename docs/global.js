@@ -28,10 +28,14 @@ function renderSidebar(page, otherPages = []) {
     sidebarContent.appendChild(sidebarDescription);
     let sidebarPages = document.createElement("ul");
     sidebarPages.id = "sidebar-pages";
-    for (let page in otherPages) {
+    for (let innerPage in otherPages) {
+        let newPage = page[innerPage];
+        if (typeof newPage === "undefined") {
+            continue;
+        }
         let sidebarPage = document.createElement("li");
         sidebarPage.id = "sidebar-page";
-        sidebarPage.innerHTML = page.title;
+        sidebarPage.innerHTML = newPage.title;
         sidebarPages.appendChild(sidebarPage);
     }
     sidebarContent.appendChild(sidebarPages);
@@ -41,7 +45,7 @@ function renderSidebar(page, otherPages = []) {
 
 function renderPage(page, otherPages = []) {
     document.title = page.title;
-    renderSidebar();
+    renderSidebar(page, otherPages);
     if (typeof window.pageContents !== "undefined") {
         let content = document.createElement("div");
         content.id = "content";
@@ -54,12 +58,13 @@ function renderPage(page, otherPages = []) {
 
 window.addEventListener("DOMContentLoaded", () => {
     let path = window.location.pathname.split("/");
-    let inGithubPages = windows.location.hostname == "github.io";
-    if (path.length == 0) {
+    let inGithubPages = window.location.hostname == "github.io" || window.location.hostname == "github.dev";
+    if (path.length == inGithubPages) {
         path = ["", ""];
     }
 
     let page = pages[path[2]];
+    console.log(page)
     if (!page.home) {
         return renderPage(page[path[3]], page);
     } 
